@@ -3,9 +3,8 @@ import { isLoggedin } from '../apis/auth';
 import { getRecipes } from '../apis/recipes';
 
 export async function profileLoader({ params, request }) {
+  const recipes = await getRecipes();
   if (await isLoggedin()) {
-    const recipes = await getRecipes();
-    console.log(recipes);
     return defer({
       recipes: new Promise((res) => setTimeout(() => res(recipes), 3000)),
     });

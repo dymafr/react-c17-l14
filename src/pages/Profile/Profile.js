@@ -1,20 +1,9 @@
 import React, { Suspense } from 'react';
-import {
-  NavLink,
-  Outlet,
-  useParams,
-  useSearchParams,
-  useOutletContext,
-  useLoaderData,
-  Await,
-} from 'react-router-dom';
+import { NavLink, Outlet, useLoaderData, Await } from 'react-router-dom';
 import Recipes from './components/Recipes/Recipes';
 
 export default function Profile() {
-  const { id } = useParams();
-  const [queryParams, setQueryParams] = useSearchParams();
-  const user = useOutletContext();
-  const recipes = useLoaderData();
+  const { recipes } = useLoaderData();
 
   return (
     <>
@@ -33,9 +22,6 @@ export default function Profile() {
       </ul>
       <div className="p-20">
         <h2 className="mb-20">Profile</h2>
-        <ul>
-          {recipes && recipes.map((r) => <li key={r._id}>{r.title}</li>)}{' '}
-        </ul>
         <Suspense fallback={<small>Chargement</small>}>
           <Await resolve={recipes} errorElement={<h3>Error fetch</h3>}>
             <Recipes />
