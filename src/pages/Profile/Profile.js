@@ -6,7 +6,9 @@ import {
   useSearchParams,
   useOutletContext,
   useLoaderData,
+  Await,
 } from 'react-router-dom';
+import Recipes from './components/Recipes/Recipes';
 
 export default function Profile() {
   const { id } = useParams();
@@ -35,6 +37,9 @@ export default function Profile() {
           {recipes && recipes.map((r) => <li key={r._id}>{r.title}</li>)}{' '}
         </ul>
         <Suspense fallback={<small>Chargement</small>}>
+          <Await resolve={recipes} errorElement={<h3>Error fetch</h3>}>
+            <Recipes />
+          </Await>
           <Outlet />
         </Suspense>
       </div>
