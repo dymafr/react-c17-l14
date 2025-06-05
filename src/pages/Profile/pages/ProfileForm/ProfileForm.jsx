@@ -1,25 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useActionData, useSubmit } from 'react-router';
 
-export default function ProfileForm() {
-  const error = useActionData();
-  const { register, handleSubmit } = useForm();
+function ProfileForm() {
+  const actionData = useActionData();
   const submit = useSubmit();
-
-  useEffect(() => {
-    console.log(error);
-  }, [error]);
+  const { register, handleSubmit } = useForm();
 
   async function mySubmit(data) {
-    submit(data, {
-      method: 'post',
-    });
+    submit(data, { method: 'POST' });
   }
 
   return (
     <>
-      <h3 className="p-20">Profile Form</h3>
+      <h3>ProfileForm</h3>
       <form onSubmit={handleSubmit((data) => mySubmit(data))} className="p-20">
         <input {...register('content')} type="text" className="mr-5" />
         <button className="btn btn-primary">Submit</button>
@@ -27,3 +21,5 @@ export default function ProfileForm() {
     </>
   );
 }
+
+export default ProfileForm;
