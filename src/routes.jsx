@@ -24,7 +24,7 @@ const ProfileForm = lazy(
     )
 );
 
-export const router = createBrowserRouter([
+export const ROUTER = createBrowserRouter([
   {
     path: '/',
     Component: App,
