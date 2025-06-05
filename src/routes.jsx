@@ -16,7 +16,7 @@ const Profile = lazy(
     })
 );
 const ProtectedRoute = lazy(() =>
-  import('./components/ProtectedRoute/ProjectedRoute')
+  import('./components/ProtectedRoute/ProtectedRoute')
 );
 
 export const ROUTER = createBrowserRouter([
