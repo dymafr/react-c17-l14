@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useMatch } from 'react-router-dom';
+import { NavLink, useMatch } from 'react-router';
 import styles from './Header.module.scss';
 
 function Header() {

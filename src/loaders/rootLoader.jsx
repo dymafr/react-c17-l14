@@ -1,4 +1,4 @@
-import { json } from 'react-router-dom';
+import { json } from 'react-router';
 
 export async function rootLoader() {
   const user = { name: 'Paul', age: 42 };

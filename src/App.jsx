@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
   useNavigation,
   useLoaderData,
-} from 'react-router-dom';
+} from 'react-router';
 import styles from './App.module.scss';
 
 function App() {

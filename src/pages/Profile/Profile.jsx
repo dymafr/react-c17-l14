@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { NavLink, Outlet, useLoaderData, Await } from 'react-router-dom';
+import { NavLink, Outlet, useLoaderData, Await } from 'react-router';
 import Recipes from './components/Recipes/Recipes';
 
 export default function Profile() {

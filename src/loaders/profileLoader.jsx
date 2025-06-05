@@ -1,4 +1,4 @@
-import { redirect, defer } from 'react-router-dom';
+import { redirect, defer } from 'react-router';
 import { isLoggedin } from '../apis/auth';
 import { getRecipes } from '../apis/recipes';
 

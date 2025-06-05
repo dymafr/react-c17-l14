@@ -1,7 +1,7 @@
-import React, { lazy } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { lazy } from 'react';
+import { createBrowserRouter } from 'react-router';
 import App from './App';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
+import ErrorBoundary from './pages/ErrorBoundary/ErrorBoundary';
 import { rootLoader } from './loaders/rootLoader';
 import { profileLoader } from './loaders/profileLoader';
 import { profileFormAction } from './actions/profileFormAction';
@@ -14,39 +14,45 @@ const ProfileOverview = lazy(() =>
 const ProfileData = lazy(() =>
   import('./pages/Profile/pages/ProfileData/ProfileData')
 );
-const ProfileForm = lazy(() =>
-  import('./pages/Profile/pages/ProfileForm/ProfileForm')
+const ProfileForm = lazy(
+  () =>
+    new Promise((res) =>
+      setTimeout(
+        () => res(import('./pages/Profile/pages/ProfileForm/ProfileForm')),
+        2000
+      )
+    )
 );
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    Component: App,
     loader: rootLoader,
-    errorElement: <ErrorPage />,
+    ErrorBoundary: ErrorBoundary,
     children: [
       {
         index: true,
-        element: <Homepage />,
+        Component: Homepage,
       },
       {
         path: '/profile',
-        element: <Profile />,
+        Component: Profile,
         loader: profileLoader,
         caseSensitive: true,
         children: [
           {
             index: true,
-            element: <ProfileOverview />,
+            Component: ProfileOverview,
           },
           {
             path: 'data',
-            element: <ProfileData />,
+            Component: ProfileData,
           },
           {
             path: 'form',
             action: profileFormAction,
-            element: <ProfileForm />,
+            Component: ProfileForm,
           },
         ],
       },

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useActionData, useSubmit } from 'react-router-dom';
+import { useActionData, useSubmit } from 'react-router';
 
 export default function ProfileForm() {
   const error = useActionData();

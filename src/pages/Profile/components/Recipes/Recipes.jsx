@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAsyncValue } from 'react-router-dom';
+import { useAsyncValue } from 'react-router';
 
 export default function Recipes() {
   const recipes = useAsyncValue();

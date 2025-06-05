@@ -1,5 +1,5 @@
 import { createRecipe } from '../apis/recipes';
-import { redirect } from 'react-router-dom';
+import { redirect } from 'react-router';
 
 export async function profileFormAction({ request, params }) {
   const data = await request.formData();
